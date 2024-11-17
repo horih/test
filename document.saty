@@ -1,0 +1,29 @@
+@require: class-template/class-template
+@require: color
+@require: itemize
+@require: easytable/easytable
+@require: latexcmds/latexcmds
+@require: figbox/figbox
+@require: code-printer/code-printer
+@require: code-printer/code-syntax
+@require: code-printer/code-theme
+
+open ClassTemplate
+open EasyTableAlias
+open FigBox
+open LatexCmds
+let-inline ctx \br = inline-fil ++ embed-block-breakable ctx (block-skip (get-natural-width (read-inline ctx { m })))
+in
+
+document(default-setting
+    |> set-title {  }
+    |> set-author {  }
+    |> set-abstract '<>
+    |> set-section-font-size-ratio (fun n -> (match n with
+    | 1 -> 1.2
+    | 2 -> 1.1
+    | _ -> 1.0))
+    |> set-normal-font-size 10pt)'<
+
+    +section{}<>
+    >
